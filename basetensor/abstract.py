@@ -12,7 +12,6 @@ from abc import ABC, abstractmethod
 from basetensor.network import CreateTFNetwork
 import tensorflow as tf
 import numpy as np
-from tensorflow.python.client import timeline
 
 
 class BasicTFTraining(ABC):

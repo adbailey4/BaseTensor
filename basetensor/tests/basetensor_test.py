@@ -8,9 +8,7 @@
 # History: 12/07/17 Created
 ########################################################################
 import unittest
-from basetensor.dataset import CreateTFDataset
-from basetensor.network import CreateTFNetwork
-from basetensor.utils import time_it
+from basetensor.abstract import CreateTFDataset, CreateTFNetwork
 
 
 class BaseTensorTests(unittest.TestCase):
@@ -32,14 +30,6 @@ class BaseTensorTests(unittest.TestCase):
         NetworkPass(self.dataset)
         with self.assertRaises(AssertionError):
             NetworkPass("somethingelse")
-
-    def test_time_it(self):
-        """Test time_it function"""
-        def add(x, y):
-            return x + y
-        _, _ = time_it(add, 1, 2)
-        with self.assertRaises(AssertionError):
-            time_it(1, 1, 2)
 
 
 class PassDataset(CreateTFDataset):
