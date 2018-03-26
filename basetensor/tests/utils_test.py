@@ -16,11 +16,13 @@ class BaseTensorTests(unittest.TestCase):
 
     def test_optimistic_restore(self):
         """test_optimistic_restore"""
+        # TODO still need to create a test model and make sure optimistic restore works
         pass
 
     def test_check_for_nvidia_gpu(self):
         """test check_for_nvidia_gpu"""
-        pass
+        self.assertFalse(check_for_nvidia_gpu(4))
+        self.assertFalse(check_for_nvidia_gpu(4))
 
 
 if __name__ == '__main__':
