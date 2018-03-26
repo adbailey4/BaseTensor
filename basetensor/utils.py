@@ -32,7 +32,7 @@ def optimistic_restore(session, save_file):
     saver.restore(session, save_file)
 
 
-def test_for_nvidia_gpu(num_gpu):
+def check_for_nvidia_gpu(num_gpu):
     assert type(num_gpu) is int, "num_gpu option must be integer"
     if num_gpu == 0:
         return False

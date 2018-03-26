@@ -18,7 +18,7 @@ def main():
     start = timer()
     setup(
         name="basetensor",
-        version='0.0.1',
+        version='0.0.2',
         description='Abstract classes for tensorflow and some utility functions',
         url='https://github.com/adbailey4/BaseTensor',
         author='Andrew Bailey',

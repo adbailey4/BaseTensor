@@ -8,7 +8,7 @@
 # History: 12/07/17 Created
 ########################################################################
 import unittest
-from basetensor.utils import optimistic_restore, test_for_nvidia_gpu
+from basetensor.utils import optimistic_restore, check_for_nvidia_gpu
 
 
 class BaseTensorTests(unittest.TestCase):
@@ -18,10 +18,9 @@ class BaseTensorTests(unittest.TestCase):
         """test_optimistic_restore"""
         pass
 
-    def test_test_for_nvidia_gpu(self):
-        """test_for_nvidia_gpu"""
+    def test_check_for_nvidia_gpu(self):
+        """test check_for_nvidia_gpu"""
         pass
-
 
 
 if __name__ == '__main__':
