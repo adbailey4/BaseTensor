@@ -325,7 +325,8 @@ class CreateTFNetwork(ABC):
     # TODO add L2 and L1 regularization to LSTM models
     # # # This depends on the
     @staticmethod
-    def _lstm_cell(n_hidden, forget_bias=5.0, output_keep_prob=1.0, state_keep_prob=1.0, input_keep_prob=1.0):
+    def _lstm_cell(n_hidden, forget_bias=5.0, output_keep_prob=1.0, state_keep_prob=1.0, input_keep_prob=1.0,
+                   reuse=False):
         """Helper function to create a LSTM cell with dropoutwrapper
 
         :param n_hidden: number of the hidden nodes
@@ -338,7 +339,7 @@ class CreateTFNetwork(ABC):
         """
         # define LSTM cell
 
-        rnn_cell = tf.nn.rnn_cell.LSTMCell(n_hidden, forget_bias=forget_bias)
+        rnn_cell = tf.nn.rnn_cell.LSTMCell(n_hidden, forget_bias=forget_bias, reuse=reuse)
         # create dropout option
         if output_keep_prob < 1 or state_keep_prob < 1 or state_keep_prob < 1:
             rnn_cell = tf.contrib.rnn.DropoutWrapper(
@@ -366,13 +367,16 @@ class CreateTFNetwork(ABC):
 
             state = tf.nn.rnn_cell.LSTMCell(n_hidden, forget_bias=forget_bias).zero_state(batch_size, tf.float32)
             outputs = []
+            reuse = False
             # loops through and creates outputs up to sequence length
             for time_step in range(sequence_length):
                 if time_step > 0:
                     tf.get_variable_scope().reuse_variables()
+                    reuse = True
                 # create a cell
                 rnn_cell = self._lstm_cell(n_hidden, forget_bias=forget_bias, output_keep_prob=output_keep_prob,
-                                           state_keep_prob=state_keep_prob, input_keep_prob=input_keep_prob)
+                                           state_keep_prob=state_keep_prob, input_keep_prob=input_keep_prob,
+                                           reuse=reuse)
                 # call the cell with inputs and cell state
                 (cell_output, state) = rnn_cell(inputs=input_vector, state=state)
                 outputs.append(cell_output)
