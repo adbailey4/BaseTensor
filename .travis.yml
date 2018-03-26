@@ -27,6 +27,7 @@ install:
 - conda info -a
 #- conda env create -f requirements35.yml
 - pip install coverage
+- pip install pytest
 - python setup.py install
 - cd basetensor
 
