@@ -50,7 +50,7 @@ class TestCreateTFNetwork(unittest.TestCase):
         input_vector = tf.placeholder(tf.float32, shape=[None, 10])
         sequence_length = 10
         n_hidden = 10
-        layer_name = "test"
+        layer_name = "test12"
         forget_bias = 5
         output_keep_prob = 1
         state_keep_prob = 1
