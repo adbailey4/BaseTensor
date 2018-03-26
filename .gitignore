@@ -3,3 +3,4 @@ build
 basetensor.egg-info
 .cache
 basetensor/tests/__pycache__/
+basetensor/__pycache__/
